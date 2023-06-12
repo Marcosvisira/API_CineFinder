@@ -1,5 +1,7 @@
-package cinefinder.api.filmes;
+package cinefinder.api.entity;
 
+import cinefinder.api.records.DadosAtualizacaoFilme;
+import cinefinder.api.records.DadosCadastroFilme;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,8 +26,8 @@ public class Filme {
     private String sinopseFilme;
     private String estreiaFilme;
     private String filmeCartaz;
-    private double duracaoFilme;
-    private int classificacaoFilme;
+    private String duracaoFilme;
+    private String classificacaoFilme;
     private String generoFilme;
     private String sessaoFilme;
     private String artista;
@@ -49,30 +51,31 @@ public class Filme {
         if (dados.tituloFilme() != null) {
             this.tituloFilme = dados.tituloFilme();
         }
-        if (dados.tituloFilme() != null) {
+        if (dados.sinopseFilme() != null) {
             this.sinopseFilme = dados.sinopseFilme();
         }
-        if (dados.tituloFilme() != null) {
+        if (dados.estreiaFilme() != null) {
             this.estreiaFilme = dados.estreiaFilme();
         }
-        if (dados.tituloFilme() != null) {
+        if (dados.filmeCartaz() != null) {
             this.filmeCartaz = dados.filmeCartaz();
         }
-        if (dados.tituloFilme() != null) {
+        if (dados.duracaoFilme() != null) {
             this.duracaoFilme = dados.duracaoFilme();
         }
-        if (dados.tituloFilme() != null) {
+        if (dados.classificacaoFilme() != null) {
             this.classificacaoFilme = dados.classificacaoFilme();
         }
-        if (dados.tituloFilme() != null) {
+        if (dados.generoFilme() != null) {
             this.generoFilme = dados.generoFilme();
         }
-        if (dados.tituloFilme() != null) {
+        if (dados.sessaoFilme() != null) {
             this.sessaoFilme = dados.sessaoFilme();
         }
-        if (dados.tituloFilme() != null) {
+        if (dados.artista() != null) {
             this.artista = dados.artista();
         }
+
 
     }
 }

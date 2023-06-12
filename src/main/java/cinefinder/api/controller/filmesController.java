@@ -1,16 +1,16 @@
 package cinefinder.api.controller;
 
-import cinefinder.api.cinema.DadosCadastroCine;
-import cinefinder.api.cinema.DadosListagemCinema;
-import cinefinder.api.filmes.*;
+import cinefinder.api.entity.Filme;
+import cinefinder.api.records.DadosAtualizacaoFilme;
+import cinefinder.api.records.DadosCadastroFilme;
+import cinefinder.api.records.DadosListagemFilme;
+import cinefinder.api.repository.FilmeRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("filmes")

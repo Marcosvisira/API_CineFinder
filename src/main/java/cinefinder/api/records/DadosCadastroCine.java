@@ -1,10 +1,7 @@
-package cinefinder.api.cinema;
+package cinefinder.api.records;
 
 
-import cinefinder.api.endereco.DadosEndereco;
 import jakarta.validation.Valid;
-
-import jakarta.validation.constraints.Pattern;
 
 public record DadosCadastroCine(
 

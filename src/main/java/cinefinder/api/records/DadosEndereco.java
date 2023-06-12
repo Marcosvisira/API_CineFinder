@@ -1,9 +1,10 @@
-package cinefinder.api.endereco;
+package cinefinder.api.records;
 
 
 
 
-public record DadosEndereco(String logradouro,
+public record DadosEndereco(Long ID,
+                            String logradouro,
 
                             String cidade,
 

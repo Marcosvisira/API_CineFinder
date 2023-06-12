@@ -1,4 +1,4 @@
-package cinefinder.api.filmes;
+package cinefinder.api.records;
 
 import jakarta.validation.constraints.NotNull;
 
@@ -9,8 +9,8 @@ public record DadosAtualizacaoFilme(
         String sinopseFilme,
         String estreiaFilme,
         String filmeCartaz,
-        double duracaoFilme,
-        int classificacaoFilme,
+        String duracaoFilme,
+        String classificacaoFilme,
         String generoFilme,
         String sessaoFilme,
         String artista) {
