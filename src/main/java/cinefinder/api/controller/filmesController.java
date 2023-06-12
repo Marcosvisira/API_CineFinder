@@ -39,6 +39,11 @@ public class filmesController {
 
     }
 
+    @DeleteMapping("/{ID}")
+    @Transactional
+    public void excluir(@PathVariable Long ID) {
+        repository.deleteById(ID);
+    }
 
 
 }
