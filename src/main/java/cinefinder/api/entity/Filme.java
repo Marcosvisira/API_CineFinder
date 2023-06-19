@@ -2,6 +2,7 @@ package cinefinder.api.entity;
 
 import cinefinder.api.records.DadosAtualizacaoFilme;
 import cinefinder.api.records.DadosCadastroFilme;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -10,6 +11,8 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Table(name = "filmes")
 @Entity(name = "Filme")
@@ -31,6 +34,14 @@ public class Filme {
     private String generoFilme;
     private String sessaoFilme;
     private String artista;
+
+    @ManyToMany
+    @JoinTable(name = "cinemas_filmes",
+            joinColumns = @JoinColumn(name = "id_filme"),
+            inverseJoinColumns = @JoinColumn(name = "id_cinema"))
+    @JsonBackReference
+    private List<Cinema> cinemas;
+
 
 
     public Filme(DadosCadastroFilme dados) {
@@ -77,5 +88,93 @@ public class Filme {
         }
 
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTituloFilme() {
+        return tituloFilme;
+    }
+
+    public void setTituloFilme(String tituloFilme) {
+        this.tituloFilme = tituloFilme;
+    }
+
+    public String getSinopseFilme() {
+        return sinopseFilme;
+    }
+
+    public void setSinopseFilme(String sinopseFilme) {
+        this.sinopseFilme = sinopseFilme;
+    }
+
+    public String getEstreiaFilme() {
+        return estreiaFilme;
+    }
+
+    public void setEstreiaFilme(String estreiaFilme) {
+        this.estreiaFilme = estreiaFilme;
+    }
+
+    public String getFilmeCartaz() {
+        return filmeCartaz;
+    }
+
+    public void setFilmeCartaz(String filmeCartaz) {
+        this.filmeCartaz = filmeCartaz;
+    }
+
+    public String getDuracaoFilme() {
+        return duracaoFilme;
+    }
+
+    public void setDuracaoFilme(String duracaoFilme) {
+        this.duracaoFilme = duracaoFilme;
+    }
+
+    public String getClassificacaoFilme() {
+        return classificacaoFilme;
+    }
+
+    public void setClassificacaoFilme(String classificacaoFilme) {
+        this.classificacaoFilme = classificacaoFilme;
+    }
+
+    public String getGeneroFilme() {
+        return generoFilme;
+    }
+
+    public void setGeneroFilme(String generoFilme) {
+        this.generoFilme = generoFilme;
+    }
+
+    public String getSessaoFilme() {
+        return sessaoFilme;
+    }
+
+    public void setSessaoFilme(String sessaoFilme) {
+        this.sessaoFilme = sessaoFilme;
+    }
+
+    public String getArtista() {
+        return artista;
+    }
+
+    public void setArtista(String artista) {
+        this.artista = artista;
+    }
+
+    public List<Cinema> getCinemas() {
+        return cinemas;
+    }
+
+    public void setCinemas(List<Cinema> cinemas) {
+        this.cinemas = cinemas;
     }
 }

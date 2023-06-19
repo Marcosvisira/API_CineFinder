@@ -3,11 +3,14 @@ package cinefinder.api.entity;
 
 import cinefinder.api.records.DadosCadastroCine;
 import cinefinder.api.records.DadosEndereco;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Table(name = "cinemas")
 @Entity(name = "Cinema")
@@ -27,6 +30,11 @@ public class Cinema {
 
     @Embedded
     private Endereco endereco;
+
+    @ManyToMany(mappedBy = "cinemas")
+    @JsonManagedReference
+    private List<Filme> filmes;
+
 
 
     public Cinema(DadosCadastroCine dados){
