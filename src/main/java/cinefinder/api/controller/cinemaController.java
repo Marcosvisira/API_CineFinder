@@ -26,7 +26,7 @@ public class cinemaController {
     public ResponseEntity<String> cadastrar(@RequestBody @Valid DadosCadastroCine dados){
         System.out.println(dados);
         repository.save(new Cinema(dados));
-        return ResponseEntity.ok("Cinema cadastrado com sucesso.");
+        return ResponseEntity.ok("Cinema cadastrado com sucesso");
     }
 
     @GetMapping
