@@ -5,7 +5,6 @@ import cinefinder.api.entity.Filme;
 import cinefinder.api.records.DadosAtualizacaoFilme;
 import cinefinder.api.records.DadosCadastroFilme;
 import cinefinder.api.records.DadosListagemFilme;
-import cinefinder.api.repository.CinemaFilmeRepository;
 import cinefinder.api.repository.CinemaRepository;
 import cinefinder.api.repository.FilmeRepository;
 import jakarta.transaction.Transactional;
@@ -24,9 +23,6 @@ public class filmesController {
 
     @Autowired
     private FilmeRepository repository;
-
-    @Autowired
-    private CinemaFilmeRepository cinemaFilmeRepository;
 
     @Autowired
     private CinemaRepository cinemaRepository;

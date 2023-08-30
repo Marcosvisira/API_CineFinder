@@ -11,6 +11,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,9 +23,10 @@ public class cinemaController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid DadosCadastroCine dados){
+    public ResponseEntity<String> cadastrar(@RequestBody @Valid DadosCadastroCine dados){
         System.out.println(dados);
         repository.save(new Cinema(dados));
+        return ResponseEntity.ok("Cinema cadastrado com sucesso.");
     }
 
     @GetMapping
