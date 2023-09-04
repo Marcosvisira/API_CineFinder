@@ -30,21 +30,27 @@ public class cinemaController {
     }
 
     @GetMapping
-    public Page<DadosListagemCinema> listar(Pageable paginacao){
-        return repository.findAll(paginacao).map(DadosListagemCinema::new);
+    public ResponseEntity<Page<DadosListagemCinema>> listar(Pageable paginacao){
+        var page =  repository.findAll(paginacao).map(DadosListagemCinema::new);
+        return ResponseEntity.ok(page);
     }
 
     @PutMapping
     @Transactional
-    public void atualizar(@RequestBody @Valid DadosEndereco dados) {
+    public ResponseEntity atualizar(@RequestBody @Valid DadosEndereco dados) {
         var endereco = repository.getReferenceById(dados.ID());
         endereco.atualizarInformacoes(dados);
+
+        return ResponseEntity.ok(dados);
+
     }
 
     @DeleteMapping("/{ID}")
     @Transactional
-    public void excluir(@PathVariable Long ID){
+    public ResponseEntity excluir(@PathVariable Long ID){
         repository.deleteById(ID);
+
+        return ResponseEntity.noContent().build();
     }
 
 }

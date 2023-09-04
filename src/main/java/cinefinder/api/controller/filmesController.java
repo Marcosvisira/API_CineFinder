@@ -38,22 +38,24 @@ public class filmesController {
     }
 
     @GetMapping
-    public Page<DadosListagemFilme> listar(Pageable paginacao){
-        return repository.findAll(paginacao).map(DadosListagemFilme::new);
+    public  ResponseEntity <Page<DadosListagemFilme>> listar(Pageable paginacao){
+        var page = repository.findAll(paginacao).map(DadosListagemFilme::new);
+        return ResponseEntity.ok(page);
     }
 
     @PutMapping
     @Transactional
-    public void atualizar(@RequestBody @Valid DadosAtualizacaoFilme dados){
+    public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoFilme dados){
         var filme = repository.getReferenceById(dados.ID());
         filme.atualizarInformacoes(dados);
-
+        return ResponseEntity.ok(dados);
     }
 
     @DeleteMapping("/{ID}")
     @Transactional
-    public void excluir(@PathVariable Long ID) {
+    public ResponseEntity excluir(@PathVariable Long ID) {
         repository.deleteById(ID);
+        return ResponseEntity.ok("O Filme " + ID + " foi deletado");
     }
 
 
