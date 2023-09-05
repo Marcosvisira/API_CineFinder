@@ -13,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("cinemas")
@@ -23,9 +24,11 @@ public class cinemaController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<String> cadastrar(@RequestBody @Valid DadosCadastroCine dados){
+    public ResponseEntity<String> cadastrar(@RequestBody @Valid DadosCadastroCine dados, UriComponentsBuilder uriBuilder){
         System.out.println(dados);
         repository.save(new Cinema(dados));
+        var uri = uriBuilder.path("/cinemas/");
+
         return ResponseEntity.ok("Cinema cadastrado com sucesso.");
     }
 
